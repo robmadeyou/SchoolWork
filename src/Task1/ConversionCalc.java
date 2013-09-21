@@ -17,33 +17,87 @@ import javax.swing.UIManager;
 public class ConversionCalc extends JFrame{
 	
 	private JLabel item1;
+	private JLabel item2;
+	private JLabel item3;
 	private JPanel panel;
-	private JTextField item2;
-	private JButton button;
+	
+	/*
+	 * Input text fields
+	 */
+	private JTextField miles;
+	private JTextField inches;
+	private JTextField kilos;
+	
+	private JTextField kilometers;
+	private JTextField cm;
+	private JTextField pounds;
+	
+	private JButton button1;
 	
 	public ConversionCalc(){
 		super("Conversion Calc");
 		
-		item1 = new JLabel("Hello world!");
-		item1.setToolTipText("Hovering");
-		item2 = new JTextField();
-		item2.setText("Crap");
+		button1 = new JButton();
+		button1.setText("Convert!");
+		button1.setBounds(90, 120, 100, 20);
 		
-		button = new JButton();
-		button.setText("Cha");
-		button.setBounds(40, 80, 40, 40);
+		item1 = new JLabel("To");
+		item1.setToolTipText("Whoo, spooky ghost");
+		item1.setBounds(130, 20, 100, 20);
+		
+		item2 = new JLabel("To");
+		item2.setToolTipText("Whoo, spooky ghost");
+		item2.setBounds(130, 50, 100, 20);
+		
+		item3 = new JLabel("To");
+		item3.setToolTipText("Whoo, spooky ghost");
+		item3.setBounds(130, 80, 100, 20);
+		
+		miles = new JTextField();
+		miles.setText("Miles");
+		miles.setBounds(50, 20, 60, 30);
+		
+		inches = new JTextField();
+		inches.setText("Inches");
+		inches.setBounds(50, 50, 60, 30);
+		
+		kilos = new JTextField();
+		kilos.setText("Kilos");
+		kilos.setBounds(50, 80, 60, 30);
 		
 		
+		kilometers = new JTextField();
+		kilometers.setText("KM");
+		kilometers.setBounds(170, 20, 60, 30);
 		
+		cm = new JTextField();
+		cm.setText("Cm");
+		cm.setBounds(170, 50, 60, 30);
+		
+		pounds = new JTextField();
+		pounds.setText("Kilos");
+		pounds.setBounds(170, 80, 60, 30);
 		
 		panel = new JPanel();
 		panel.setLayout(null);
+		
 		Handler handler = new Handler();
-		button.addActionListener(handler);
-		item2.addActionListener(handler);
+		
+		button1.addActionListener(handler);
+		panel.add(button1);
+		
+		
+		panel.add(miles);
+		panel.add(inches);
+		panel.add(kilos);
+		
+		panel.add(kilometers);
+		panel.add(cm);
+		panel.add(pounds);
+		
 		panel.add(item1);
 		panel.add(item2);
-		panel.add(button);
+		panel.add(item3);
 		add(panel);
 		
 		
@@ -55,22 +109,40 @@ public class ConversionCalc extends JFrame{
 		}catch(Exception e){
 			
 		}
+		
 		calc = new ConversionCalc();
 		calc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
-		calc.setSize(400, 200);
+		calc.setSize(280, 200);
 		calc.setVisible(true);
 	}
 	
 	public class Handler implements ActionListener{
 		public void actionPerformed(ActionEvent event){
-			String string = "";
-			boolean button = false;
+			float mileToKm = 1.60935f;
+			float inchToCm = 2.4f;
+			float kgToPound = 2.2046f;
 			
-			if(event.getSource() == item2){
-				string = String.format("field 1: %s", event.getActionCommand());
+			
+			panel.add(miles);
+			panel.add(inches);
+			panel.add(kilos);
+			
+			panel.add(kilometers);
+			panel.add(cm);
+			panel.add(pounds);
+			
+			if(event.getSource() == button1){
+				double km = Math.round(Double.parseDouble(miles.getText()) * mileToKm);
+				kilometers.setText(km + "");
+				double centm = Math.round(Double.parseDouble(inches.getText()) * inchToCm);
+				cm.setText(centm + "");
+				double pound = Math.round(Double.parseDouble(kilos.getText()) * kgToPound);
+				pounds.setText(pound + "");
+				
+				
+				
 			}
-			JOptionPane.showMessageDialog(calc, string);
 		}
 	}
 	
