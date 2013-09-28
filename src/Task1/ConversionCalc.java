@@ -140,8 +140,9 @@ public class ConversionCalc extends JFrame{
 		calc.setSize(280, 200);
 		calc.setVisible(true);
 	}
-	
-	
+	public static void test(){
+		System.out.println("Hello!!!");
+	}
 	/*
 	 * Action listener, will listen if any even is called, for example a button pressed or
 	 * text is entered
