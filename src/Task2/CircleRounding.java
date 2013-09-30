@@ -25,7 +25,7 @@ public class CircleRounding {
 				circumference = diameter * Pi;
 				state = true;
 			}catch(InputMismatchException e){
-				System.out.println("Prease enter only enter numbers");
+				System.out.println("Prease enter only numbers");
 			}
 		}
 		System.out.printf("Diameter: %1$.2f8" ,diameter);
