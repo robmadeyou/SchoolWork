@@ -1,6 +1,6 @@
-package Task2;
+package Task3;
 
-public class TriangularNum {
+public class TrianglesLoop {
 	
 	public static void main(String args[]){
 		Integer[] triNum = new Integer[8];
